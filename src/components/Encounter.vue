@@ -1,7 +1,9 @@
 <template>
     <div class="encounter-container">
-        <Entity/>
-
+        <div v-for="{name, initiative, index} of list" v-bind:key="index">
+            <span>{{index}}</span>
+            <Entity :name="name" :initiative="initiative"/>
+        </div>
     </div>
 </template>
 
@@ -9,6 +11,10 @@
 import Entity from "./Entity"
 export default {
     name: "Encounter",
+    props: ["list"],
+    computed: {
+
+    },
     components: {
         Entity,
     }
