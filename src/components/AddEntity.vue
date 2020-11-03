@@ -3,9 +3,9 @@
         <p>New Entity</p>
         <span class="input">
             <label for="name">Name:</label>
-            <input type="text" name="name" v-model="newEntity.name">
+            <input type="text" name="name" v-on:change="(e)=> newEntity.name= e.target.value">
             <label for="initiative">Initiative:</label>
-            <input type="text" name="initiative" v-model="newEntity.initiative">
+            <input type="text" name="initiative" v-on:change="(e) => newEntity.initiative = e.target.value">
             <button type="button" id="submit" v-on:click="sendEntity">Add</button>
         </span>
     </div>
@@ -21,7 +21,8 @@ export default {
     methods: {
         sendEntity() {
             console.log(this.newEntity);
-            this.$emit("sendEntity", this.newEntity);
+            let passingEntity = {name: this.newEntity.name, initiative: this.newEntity.initiative};
+            this.$emit("sendEntity", passingEntity);
         }
     },
 
