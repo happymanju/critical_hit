@@ -1,14 +1,19 @@
 <template>
   <div id="app">
+    <AddEntity />
+    <Encounter />
   </div>
 </template>
 
 <script>
+import Encounter from "./components/Encounter";
+import AddEntity from "./components/AddEntity";
 
 export default {
   name: 'App',
   components: {
-    
+    Encounter,
+    AddEntity,
   }
 }
 </script>
