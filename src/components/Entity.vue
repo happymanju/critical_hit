@@ -1,14 +1,26 @@
 <template>
     <div class="entity">
         <span class="el">{{name}}</span>
-        <span class="el">{{initiative}}</span>
+        <span class="el">HP: {{hp}}</span>
+        <span class="el">Initiative: {{initiative}}</span>
+        <input type="text" v-on:change="(e) => {this.damage=e.target.value; dealDamage() }" placeholder="damage">
+
     </div>
 </template>
 
 <script>
 export default {
     name: "Entity",
-    props: ["name", "initiative"],
+    props: ["name", "hp", "initiative"],
+    data: () => ({
+        damage: "",
+        healing: "",
+    }),
+    methods: {
+        dealDamage() {
+            this.hp -= Number(this.damage)
+        }
+    }
 
 }
 </script>
