@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <AddEntity  v-on:sendEntity="updateEntities"/>
-    <Encounter :list="entities"/>
+    <Encounter :list="sortedEntities"/>
   </div>
 </template>
 
@@ -13,14 +13,23 @@ export default {
   name: 'App',
   data: () => ({
     entities: [],
+    currentEntities: [],
   }),
+  computed: {
+    sortedEntities() {
+      let origArr = this.currentEntities;
+      return origArr.sort(function(a,b){
+        return b.initiative-a.initiative;
+      })
+    }
+  },
   components: {
     Encounter,
     AddEntity,
   },
   methods: {
     updateEntities: function(entity){
-      this.entities.push(entity);
+      this.currentEntities.push(entity);
     }
   }
 }

@@ -21,7 +21,9 @@ export default {
     methods: {
         sendEntity() {
             console.log(this.newEntity);
-            let passingEntity = {name: this.newEntity.name, initiative: this.newEntity.initiative};
+            const d20 = Math.floor(Math.random() * 20 + 1);
+
+            let passingEntity = {name: this.newEntity.name, initiative: (Number(this.newEntity.initiative) + d20)};
             this.$emit("sendEntity", passingEntity);
         }
     },
