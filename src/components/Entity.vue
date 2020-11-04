@@ -1,7 +1,7 @@
 <template>
     <div class="entity">
         <span class="el">{{name}}</span>
-        <span class="el">HP: {{hp}}</span>
+        <span class="el">HP: {{currentHP}}</span>
         <span class="el">Initiative: {{initiative}}</span>
         <input type="text" v-on:change="(e) => {this.damage=e.target.value; dealDamage();}" placeholder="damage">
         <input type="text" v-on:change="(e) => {this.healing=e.target.value; restoreHP();}" placeholder="healing">
@@ -12,17 +12,22 @@
 <script>
 export default {
     name: "Entity",
-    props: ["name", "hp", "initiative"],
+    props: ["name", "currentHP", "maxHP", "initiative"],
     data: () => ({
         damage: "",
         healing: "",
     }),
     methods: {
         dealDamage() {
-            this.hp -= Number(this.damage)
+            this.currentHP -= Number(this.damage)
         },
         restoreHP() {
-            this.hp += Number(this.healing)
+            const healing = Number(this.healing)
+            const limit = Number(this.maxHP);
+            if(!(this.currentHP + healing) > limit){
+                this.currentHP = limit;
+            }
+            this.currentHP += healing
         }
     }
 
