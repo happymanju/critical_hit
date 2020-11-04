@@ -3,11 +3,11 @@
         <p>New Entity</p>
         <span class="input">
             <label for="name">Name:</label>
-            <input type="text" name="name" v-on:change="(e)=> newEntity.name= e.target.value">
+            <input type="text" name="name" v-model="newEntity.name">
             <label for="hp">HP:</label>
-            <input type="text" name="hp" v-on:change="(e)=> newEntity.hp= e.target.value">
+            <input type="text" name="hp" v-model="newEntity.hp">
             <label for="initiative">Initiative:</label>
-            <input type="text" name="initiative" v-on:change="(e) => newEntity.initiative = e.target.value">
+            <input type="text" name="initiative" v-model="newEntity.initiative">
             <button type="button" id="submit" v-on:click="sendEntity">Add</button>
         </span>
     </div>
@@ -23,9 +23,11 @@ export default {
     methods: {
         sendEntity() {
             console.log(this.newEntity);
+
             const d20 = Math.floor(Math.random() * 20 + 1);
 
             let passingEntity = {name: this.newEntity.name, hp: this.newEntity.hp, initiative: (Number(this.newEntity.initiative) + d20)};
+
             this.$emit("sendEntity", passingEntity);
         }
     },
