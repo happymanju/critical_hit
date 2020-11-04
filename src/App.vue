@@ -1,8 +1,10 @@
 <template>
   <div id="app">
+    <h1>Critical Hit</h1>
+    <h3>A 5th edition Dungeons and Dragons Combat Tracker</h3>
     <AddEntity  v-on:sendEntity="updateEntities"/>
-    <div class="start-encounter-button">
-      <button v-if="!encounterStarted && canStartEncounter" type="button" name="start-encounter" v-on:click="encounterStarted=true">Start Encounter</button>
+    <div v-if="!encounterStarted && canStartEncounter" class="start-encounter-button">
+      <button  type="button" name="start-encounter" v-on:click="encounterStarted=true">Start Encounter</button>
     </div>
     <Encounter :list="sortedEntities" :encounterStarted="encounterStarted"/>
   </div>
@@ -57,5 +59,10 @@ export default {
 
 .start-encounter-button {
   margin: 15px;
+}
+
+h1 {
+  font-family: "Grenze Gotisch";
+  font: 100px;
 }
 </style>
