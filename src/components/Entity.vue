@@ -21,7 +21,7 @@ export default {
     padding: 10px;
 }
 
-#on-turn {
+.on-turn {
     border: 3px solid red;
 }
 

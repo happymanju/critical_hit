@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <AddEntity  v-on:sendEntity="updateEntities"/>
-    <Encounter :list="sortedEntities"/>
+    <div class="start-encounter-button">
+      <button v-if="!encounterStarted && canStartEncounter" type="button" name="start-encounter" v-on:click="encounterStarted=true">Start Encounter</button>
+    </div>
+    <Encounter :list="sortedEntities" :encounterStarted="encounterStarted"/>
   </div>
 </template>
 
@@ -14,6 +17,7 @@ export default {
   data: () => ({
     entities: [],
     currentEntities: [],
+    encounterStarted: false,
   }),
   computed: {
     sortedEntities() {
@@ -21,6 +25,12 @@ export default {
       return origArr.sort(function(a,b){
         return b.initiative-a.initiative;
       })
+    },
+    canStartEncounter() {
+      if(this.currentEntities.length >= 2){
+        return true;
+      }
+      return false;
     }
   },
   components: {
@@ -43,5 +53,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.start-encounter-button {
+  margin: 15px;
 }
 </style>
