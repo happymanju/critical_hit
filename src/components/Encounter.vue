@@ -31,6 +31,6 @@ export default {
 <style>
 .encounter-container {
     max-width: 650px;
-    border: 1px solid #4444;
+    border: 1px solid white;
 }
 </style>

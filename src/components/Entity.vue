@@ -36,7 +36,7 @@ export default {
 
 <style>
 .entity {
-    border: 1px solid #4444;
+    border: 1px solid white;
     margin: 20px;
     max-width: 650px;
     padding: 10px;
