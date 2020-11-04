@@ -3,8 +3,8 @@
         <span class="el">{{name}}</span>
         <span class="el">HP: {{currentHP}}</span>
         <span class="el">Initiative: {{initiative}}</span>
-        <input type="text" v-on:change="(e) => {this.damage=e.target.value; dealDamage();}" placeholder="damage">
-        <input type="text" v-on:change="(e) => {this.healing=e.target.value; restoreHP();}" placeholder="healing">
+        <input type="text" id="entity" v-on:change="(e) => {this.damage=e.target.value; dealDamage();}" placeholder="damage">
+        <input type="text" id="entity" v-on:change="(e) => {this.healing=e.target.value; restoreHP();}" placeholder="healing">
 
     </div>
 </template>
@@ -50,7 +50,7 @@ export default {
     margin: 15px;
 }
 
-input {
+ #entity {
     width: 50px;
     margin: 10px;
 }

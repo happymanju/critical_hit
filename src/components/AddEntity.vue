@@ -43,7 +43,4 @@ export default {
     padding: 10px;
 }
 
-.input {
-    margin: 10px;
-}
 </style>
